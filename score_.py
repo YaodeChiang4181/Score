@@ -8,7 +8,8 @@ Original file is located at
 """
 
 count_failing = 0
-
+max_grade = 0
+min_grade = 100
 # 讀取一整行成績，並以空格分隔成字串列表
 grade_strings = input().split()
 
@@ -20,8 +21,15 @@ for grade_str in grade_strings:
         # 判斷是否為不及格（假設不及格分數為 60 以下）
         if grade < 60:
             count_failing += 1
+        if grade > max_grade:
+            max_grade = grade
+
+        if grade < min_grade:
+            min_grade = grade
+
     except ValueError:
         print(f"警告：'{grade_str}' 不是一個有效的成績，已跳過。")
-
+print(f"最大成績為：{max_grade}")
+print(f"最小成績為：{min_grade}")
 print(f"不及格的成績數量為：{count_failing}")
 
